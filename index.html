@@ -218,6 +218,8 @@ Responses arrive at the same speed</p></div></div>
   function arm(){ if(armed) return; armed = true; if(hasMusic){ bgm.volume = .3; bgm.play().catch(function(){}); } }
   document.addEventListener('pointerdown', arm, true); document.addEventListener('keydown', arm, true);
 
+  var intro = document.querySelector('.intro'); setTimeout(function(){ if(intro) intro.remove(); }, 2500);
+
   /* ---- parallax ---- */
   var bg = document.getElementById('bg'), bub = document.getElementById('bubble'), fine = matchMedia('(pointer:fine)').matches;
   if(fine){ document.getElementById('scene').addEventListener('mousemove', function(e){ var x = (e.clientX / innerWidth - .5), y = (e.clientY / innerHeight - .5); bg.style.transform = 'translate(' + (-x*18) + 'px,' + (-y*12) + 'px)'; }); }
